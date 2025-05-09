@@ -8,14 +8,17 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{tikz}
-\usepackage{geometry} % Add geometry package
-\geometry{margin=0.6in} % Set smaller margins (default is ~1.5-1.75in)
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\geometry{margin=0.6in} % margins (default is ~1.5-1.75in)
 \usetikzlibrary{positioning}
 
 \usepackage{xcolor} % for dark mdoe
 % \definecolor{dark}{HTML}{1F1F1F}
 % \pagecolor{dark}
 % \color[rgb]{1,1,1}
+
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
 
 \title{CSC320: Lecture Notes}
 \author{exekis}
@@ -71,34 +74,46 @@
 
 \subsection*{Nearest Neighbor Methods}
 \subsubsection*{Supervised Learning}
-We are given a training set consisting of inputs and corresponding labels. \\
 
-\textbf{Step 1:} Task is to build a system that can use the provided training set in order to make predictions on new data.
+% Supervised Learning Process Summary
+\begin{tcolorbox}[colback=gray!10!white,colframe=navyblue!70!black,title=Supervised Learning: Step-by-Step]
 
-\begin{table}[!h]
+\textbf{Step 1: Define the Problem}
+Build a system that uses training data to make predictions on new inputs.
+
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
 \textbf{Task} & \textbf{Inputs} & \textbf{Labels} \\
 \hline
 object recognition & image & object category \\
-\hline
 image captioning & image & caption \\
-\hline
 document classification & text document & category \\
-\hline
 speech-to-text & audio waveform & text \\
 \hline
 \end{tabular}
-\caption{Examples of supervised learning tasks with their inputs and corresponding labels}
-\label{tab:supervised-learning-examples}
-\end{table}
+\par\smallskip
+\textit{Examples of supervised learning tasks}
+\par
+\raggedright
 
-\textbf{Step 2:} 
+\textbf{Step 2: Mathematical Notation}
 \begin{itemize}
-  \item Create mathematical notation for the problem - Understand
-how to represent data.
-  \item Represent inputs as input vectors in $\mathbb{R}^d$.
+  \item Represent inputs as vectors $x^{(i)} \in \mathbb{R}^d$
+  \item Training set $D = \{(x^{(1)}, y^{(1)}), \ldots, (x^{(N)}, y^{(N)})\}$
+  \item For regression: $y^{(i)} \in \mathbb{R}$
+  \item For classification: $y^{(i)} \in \{1,\ldots,C\}$
 \end{itemize}
+
+\textbf{Step 3: Optimization Problem}
+\begin{itemize}
+  \item Given a novel input $x$, find optimal prediction
+  \item First approach: Nearest Neighbor algorithm
+\end{itemize}
+
+\end{tcolorbox}
+
+\subsubsection*{Nearest Neighbor}
+
 
 \end{document}
