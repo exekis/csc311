@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{geometry} % Add geometry package
+\geometry{margin=0.6in} % Set smaller margins (default is ~1.5-1.75in)
+\usetikzlibrary{positioning}
+
+\usepackage{xcolor} % for dark mdoe
+% \definecolor{dark}{HTML}{1F1F1F}
+% \pagecolor{dark}
+% \color[rgb]{1,1,1}
+
+\title{CSC320: Lecture Notes}
+\author{exekis}
+\date{May 2025} 
+
+% custom colors for code elements
+\definecolor{codekeyword}{rgb}{0.0, 0.0, 0.6}
+\definecolor{codecomment}{rgb}{0.0, 0.5, 0.0}
+\definecolor{codestring}{rgb}{0.6, 0.0, 0.0}
+
+% the listings package
+\lstset{
+  language=C,                      % language C  
+  basicstyle=\ttfamily\small,      % font type and size
+  keywordstyle=\color{codekeyword}\bfseries, % keyword color and style
+  commentstyle=\color{codecomment}\itshape,  % comment color and style
+  stringstyle=\color{codestring},  % string literal color
+  numbers=left,                    % line numbers on the left
+  numberstyle=\tiny\color{gray},   % line number style
+  frame=single,                    % a frame around the code
+  breaklines=true,                 % line breaking
+  backgroundcolor=\color{white},   % background color
+  tabsize=4,                       % tab size
+  showspaces=false,                
+  showstringspaces=false           
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{Week 1}
+
+\subsection*{Types of Machine Learning}
+\begin{itemize}
+    \item \textbf{Supervised Learning}: Have labeled examples of the correct output/behaviour
+    \item \textbf{Unsupervised Learning}: no labeled examples – instead, looking
+    for “interesting” patterns in the data
+    \item \textbf{Reinforcement Learning}: (not covered) learning system (agent)
+      interacts with the world and learns to maximize a scalar reward
+      signal
+\end{itemize}
+
+\subsection*{Implementing Machine Learning Models and Systems}
+\begin{itemize}
+    \item Step 1: Understand the problem (is it prediction, learning a good representation).
+    \item Step 2: Formulate the problem mathematically (create notation for your inputs and outcomes and model).
+    \item Step 3: Formulate an objective function that represents success for your model.
+    \item Step 4: Find a strategy to solve the optimization problem on pencil and paper.
+    \item Step 5: Translate the algorithm into code.
+    \item Step 6: Analyze, iterate, improve design choices in your model and algorithm
+\end{itemize}
+
+\subsection*{Nearest Neighbor Methods}
+\subsubsection*{Supervised Learning}
+We are given a training set consisting of inputs and corresponding labels. \\
+
+\textbf{Step 1:} Task is to build a system that can use the provided training set in order to make predictions on new data.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Task} & \textbf{Inputs} & \textbf{Labels} \\
+\hline
+object recognition & image & object category \\
+\hline
+image captioning & image & caption \\
+\hline
+document classification & text document & category \\
+\hline
+speech-to-text & audio waveform & text \\
+\hline
+\end{tabular}
+\caption{Examples of supervised learning tasks with their inputs and corresponding labels}
+\label{tab:supervised-learning-examples}
+\end{table}
+
+\textbf{Step 2:} 
+\begin{itemize}
+  \item Create mathematical notation for the problem - Understand
+how to represent data.
+  \item Represent inputs as input vectors in $\mathbb{R}^d$.
+\end{itemize}
+
+\end{document}
