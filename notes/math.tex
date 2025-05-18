@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\geometry{margin=0.6in} % margins (default is ~1.5-1.75in)
+\usetikzlibrary{positioning}
+
+\usepackage{xcolor} % for dark mdoe
+% \definecolor{dark}{HTML}{1F1F1F}
+% \pagecolor{dark}
+% \color[rgb]{1,1,1}
+
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+
+\title{CSC311: Math Notes}
+\author{exekis}
+\date{May 2025} 
+
+% custom colors for code elements
+\definecolor{codekeyword}{rgb}{0.0, 0.0, 0.6}
+\definecolor{codecomment}{rgb}{0.0, 0.5, 0.0}
+\definecolor{codestring}{rgb}{0.6, 0.0, 0.0}
+
+% the listings package
+\lstset{
+  language=C,                      % language C  
+  basicstyle=\ttfamily\small,      % font type and size
+  keywordstyle=\color{codekeyword}\bfseries, % keyword color and style
+  commentstyle=\color{codecomment}\itshape,  % comment color and style
+  stringstyle=\color{codestring},  % string literal color
+  numbers=left,                    % line numbers on the left
+  numberstyle=\tiny\color{gray},   % line number style
+  frame=single,                    % a frame around the code
+  breaklines=true,                 % line breaking
+  backgroundcolor=\color{white},   % background color
+  tabsize=4,                       % tab size
+  showspaces=false,                
+  showstringspaces=false           
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{Euclidean Distance/L2 Norm}
+For a given vector $v$, the Euclidean distance (or L2 norm) is defined as the square root of the sum of the squares of its components. It is a measure of the straight-line distance between two points in Euclidean space.
+% || v ||_2 = \sqrt{v_1^2 + v_2^2 + \ldots + v_n^2}
+\begin{align*}
+|| v ||_2 &= \sqrt{v_1^2 + v_2^2 + \ldots + v_D^2} \\
+&= \sqrt{\sum_{i=1}^{D} v_i^2}
+\end{align*}
+If we have two vectors $x$ and $y$, written as $x = (x_1, x_2, \ldots, x_n)$ and $y = (y_1, y_2, \ldots, y_n)$, the Euclidean distance between them is given by:
+\begin{tcolorbox}[colback=white!10!white, colframe=navyblue!75!black, title=Euclidean Distance]
+\begin{align*}
+d(x, y) &= \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2} \\
+&= \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \ldots + (x_n - y_n)^2}
+\end{align*}
+\end{tcolorbox}
+
+\section*{Vector Transpose}
+The transpose of a vector $v$ is denoted as $v^T$. For a column vector $v = \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}$, the transpose is a row vector:
+\begin{align*}
+v^T &= \begin{pmatrix} v_1 & v_2 & \ldots & v_n \end{pmatrix}
+\end{align*}
+For a row vector $v = \begin{pmatrix} v_1 & v_2 & \ldots & v_n \end{pmatrix}$, the transpose is a column vector:
+\begin{align*}
+v^T &= \begin{pmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{pmatrix}
+\end{align*}
+
+\section*{Baye's Theorem}
+Baye's theorem describes the probability of an event based on prior knowledge of conditions that might be related to the event. It is expressed as:
+\begin{tcolorbox}[colback=white!10!white, colframe=navyblue!75!black, title=Baye's Theorem]
+\begin{align*}
+P(A|B) &= \frac{P(B|A) \cdot P(A)}{P(B)} \\
+P(A|B) &= \text{Posterior Probability} \\
+P(B|A) &= \text{Likelihood} \\
+P(A) &= \text{Prior Probability} \\
+P(B) &= \text{Marginal Likelihood}
+\end{align*}
+\end{tcolorbox}
+Where:
+\begin{itemize}
+    \item $P(A|B)$ is the probability of event $A$ given that $B$ is true.
+    \item $P(B|A)$ is the probability of event $B$ given that $A$ is true.
+    \item $P(A)$ is the probability of event $A$.
+    \item $P(B)$ is the probability of event $B$.
+\end{itemize}
+To remember Baye's formula, the intuition says that the posterior probability is proportional to the likelihood times the prior probability. The denominator $P(B)$ is a normalizing constant that ensures the probabilities sum to 1.
+
+\end{document}
+
