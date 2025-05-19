@@ -16,11 +16,11 @@ def unit_cube():
                         [0, 1, 1]])
 
 # sample a random point in the unit cube
-def sample_point():
+def sample_point(d):
     """
     Returns a random point in the unit cube.
     """
-    return numpy.random.rand(3)
+    return numpy.random.rand(d)
 
 # comute the distance between two points and calculate the Euclidean distance by hand with no sqrt given d as the dimension
 def distance(point1: numpy.ndarray, point2: numpy.ndarray) -> numpy.float64:
@@ -36,14 +36,14 @@ def one_dimensional_distance(point1: numpy.ndarray, point2: numpy.ndarray) -> nu
     return numpy.abs(point1 - point2)
 
 
-possible_dimensions = [2 ** 0, 2 ** 1, 2 ** 2, 2 ** 3, 2 ** 4, 2 ** 5, 2 ** 6, 2 ** 8, 2 ** 9, 2 ** 10]
+possible_dimensions = [2 ** 0, 2 ** 1, 2 ** 2, 2 ** 3, 2 ** 4, 2 ** 5, 2 ** 6, 2 ** 7, 2 ** 8, 2 ** 9, 2 ** 10]
 
 averages = []
 stds = []
 
 for dim in possible_dimensions:
     # sample 100 random points in the unit cube
-    points = numpy.array([sample_point() for _ in range(100)])
+    points = numpy.array([sample_point(dim) for _ in range(100)])
     # compute the distance between ALL PAIRS of points
     distances = numpy.array([[distance(points[i], points[j]) for j in range(100)] for i in range(100)])
     # compute the AVERAGE distance between all pairs of points

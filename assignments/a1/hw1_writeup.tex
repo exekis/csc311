@@ -97,25 +97,50 @@ Plot both the average and standard deviation as a function of d. \\
 \textbf{Answer:}
 \begin{figure}[h!]
     \centering
-    \begin{minipage}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/Figure_1_1c.png}
-        \caption{Average distance between points in the unit cube.}
-        \label{fig:average_distance}
-    \end{minipage}
-    \hspace{0.05\textwidth} % smaller gap
-    \begin{minipage}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/Figure_2_1c.png}
-        \caption{Standard deviation of distance between points in the unit cube.}
-        \label{fig:std_distance}
-    \end{minipage}
+    \includegraphics[width=0.5\textwidth]{images/Figure_1_combined.png}
+    \caption{Average and standard deviation of distances for $\ell_2$ and $\ell_1$ distances.}
+    \label{fig:distances}
 \end{figure}
 
 \color{black}
 \subsection*{(d)}
+Define the squared Euclidean distance $R = Z_1 + \cdots + Z_d$ with $Z_i = (X_i - Y_i)^2$. Given that:
+\begin{center}
+$\mathbb{E}[Z_i] = \frac{1}{3} \quad \text{and} \quad \mathrm{Var}[Z_i] = \frac{20}{23}$
+\end{center}
+determine $\mathbb{E}[R]$ and $\mathrm{Var}[R]$ using the properties of expectation and variance. You may give your answer in terms of the dimension $d$. \\
 \color{answer}
-\textbf{Answer:}
-I dont even know bro \\
+\textbf{Answer:} Since each coordinate of $\mathbf{X}$ and $\mathbf{Y}$ is sampled independently from the uniform distribution on $[0,1]$ meaning it is $\sim \mathrm{Uniform}[0,1]$, we can use the property given to us to calculate the answer.
+\begin{itemize}
+    \item $\mathbb{E}[R] = \mathbb{E}[Z_1 + Z_2 + \cdots + Z_d] = \mathbb{E}[Z_1] + \mathbb{E}[Z_2] + \cdots + \mathbb{E}[Z_d] = d \cdot \frac{1}{3} = \frac{d}{3}$
+    \item $\mathrm{Var}[R] = \mathrm{Var}[Z_1 + Z_2 + \cdots + Z_d] = \mathrm{Var}[Z_1] + \mathrm{Var}[Z_2] + \cdots + \mathrm{Var}[Z_d] = d \cdot \frac{20}{23} = \frac{20d}{23}$
+\end{itemize}
 \color{black}
+\subsection*{(e)}
+In probability theory, one can derive that
+$\mathbb{P}(|Z - \mathbb{E}[Z]| \geq a) \leq \frac{\mathrm{Var}[Z]}{a^2}
+$for any random variable Z. (This fact is known as Markov’s Inequality.) Based on your answer to part (d), explain why does this support the claim that in high dimensions, “most points are approximately the same distance”? Let’s justify this step-by-step: \\\\
+(i) We want to bound the probability that any given distance R is at least r away from its expectation. Define E as the event “R is at least r away from its expectation”. How would you write E in mathematical notation? \\\\
+\color{answer}
+\textbf{Answer:} \\
+$ E \;=\;\bigl\lvert R - \mathbb{E}[R]\bigr\rvert \;\ge\; r. $ \\\\
+\color{black}
+(ii) Use Markov’s Inequality to bound $\mathbb{P}(E)$. \\\\
+\color{answer}
+\textbf{Answer:} \\
+We already calculate din part (d) that we have
+$\mathbb{E}[R]=\tfrac d3$ and $\mathrm{Var}[R]=\tfrac{20}{23}\,d$. So plugging them into the given inequality we get $\mathbb{P}(E)
+=\mathbb{P}\bigl(|R-\mathbb{E}[R]|\ge r\bigr)
+\;\le\; \frac{\,\tfrac{20}{23}\,d\,}{r^{2}}$ \space or \space $\mathbb{P}(E)=\mathbb{P}\bigl(|R-\frac{d}{3}|\ge r\bigr) \;\le\; \frac{\,\tfrac{20}{23}\,d\,}{r^{2}}$\\\\
+\color{black}
+(iii) Let r in part (i) be proportional to distance (and therefore dimension), i.e. r = cd. Apply the result in part (ii) and note what happens to $\mathbb{P}(E)$ as d goes to $\infty$. \\\\
+\color{answer}
+\textbf{Answer:} \\
+We plug in $r=cd$ into the inequality we just got in part (ii) and we get: \\
+$\mathbb{P}(E)=\mathbb{P}\bigl(|R-\frac{d}{3}|\ge cd\bigr) \;\le\; \frac{\,\tfrac{20}{23}\,d\,}{(cd)^{2}}=\frac{20}{23c^{2}d}$ \\
+Since we have one $d$ in the denominator, as $d$ goes to $\infty$, the probability $\mathbb{P}(E)$ goes to $0$. Intuitively, this means that as the dimension increases, the probability of a point being far away from the mean distance decreases which supports what we've seen in the previous parts of the assignment. So in high dimensions, most distances between pairs of points are close to their mean, so most points are around the same distance from each other.\\
+\color{black}
+\section*{Question 2}
+\subsection*{(a)}
+
 \end{document}
